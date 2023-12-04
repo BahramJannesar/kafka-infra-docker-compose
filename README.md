@@ -45,3 +45,8 @@ As evident from the test data inserted into PostgreSQL and the specified "snapsh
 
 ![](https://github.com/BahramJannesar/kafka-infra-docker-compose/blob/main/image/Kafka%20Message.png)
 
+### Step 7 - (Schema Registry)
+
+Upon creating a new topic from a PostgreSQL table, the Schema Registry generates a version corresponding to your table. This version can be located in the Schema Registry section of the Kafka UI. In the event of a schema change in your table, this version will be updated, and subsequent messages reflecting the altered schema will be stored in Kafka with the latest version from the Schema Registry :
+
+![](https://github.com/BahramJannesar/kafka-infra-docker-compose/blob/main/image/Schema%20Registry.png)
