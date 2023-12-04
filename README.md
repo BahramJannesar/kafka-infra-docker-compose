@@ -8,6 +8,9 @@ Upon cloning the project from GitHub, execute the following commands:
 
 ``` sudo docker compose up ```
 
+Once all containers are running, you can inspect Kafka brokers through the Kafka UI at localhost:6680 using the username and password specified in the Docker Compose file.
+![](https://github.com/BahramJannesar/kafka-infra-docker-compose/blob/main/image/Kafka%20Broker.png)
+
 
 ### Step - 2 (Add Test Data into Postgres)
 
