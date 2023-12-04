@@ -2,8 +2,14 @@
 
 This repository is designed for efficiently testing Kafka environments locally and establishing connections with PostgreSQL to capture and retrieve each committed transaction in the database through Kafka.
 
-### Step 1
+### Step - 1
 
-Upon cloning the project from GitHub, execute the following commands.
+Upon cloning the project from GitHub, execute the following commands:
 
 ``` sudo docker compose up ```
+
+
+### Step - 1
+
+After pulling containers from Docker Hub and launching all associated services, you'll find an "init.sql" file in this repository. This script creates a new table in PostgreSQL and populates it with three rows of test data, as illustrated below:
+![](https://github.com/BahramJannesar/kafka-infra-docker-compose/blob/main/image/Postgres%20Table.png)
