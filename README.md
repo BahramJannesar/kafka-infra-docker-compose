@@ -7,7 +7,7 @@ This repository is designed for efficiently testing Kafka environments locally a
 Upon cloning the project from GitHub, execute the following commands:
 
 ````
-sudo docker compose up
+docker compose up
 ````
 
 Once all containers are running, you can inspect Kafka brokers through the Kafka UI at localhost:6680 using the username and password specified in the Docker Compose file.
