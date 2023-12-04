@@ -135,7 +135,7 @@ services:
     environment:
       SERVER_PORT: 6680
       LOGGING_LEVEL_ROOT: info
-      KAFKA_CLUSTERS_0_NAME: OFOOD-Kafka-Cluster
+      KAFKA_CLUSTERS_0_NAME: Kafka-Cluster
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka-broker-1:19092
       KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
       KAFKA_CLUSTERS_0_SCHEMAREGISTRY: http://schema-registry:8081
@@ -149,3 +149,30 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
+
+
+  postgres:
+    image: postgres:16.0-alpine3.18
+    container_name: postgres-database
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: kafka
+    command:
+      - "postgres"
+      - "-c"
+      - "shared_preload_libraries=pgoutput"
+      - "-c"
+      - "wal_level=logical"
+    ports:
+      - '6032:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    depends_on:
+      - kafka-broker-1
+      - schema-registry
+      - zookeeper
+      - kafka-rest
+      - kafka-connect
+      - kafka-ui
