@@ -26,3 +26,8 @@ Using this curl command, you can create a new connector with the configuration l
 ````
  curl http://localhost:8083/connectors -i -X POST -H 'Content-Type: application/json' -d @connectors/postgres_connector_config.json
 ````
+
+### Step - 4 (Check the connector from Kafka UI)
+
+Navigate to the left side of the Kafka UI, locate "Kafka Connect," and inspect the status of the connector created in step 3 : 
+![](https://github.com/BahramJannesar/kafka-infra-docker-compose/blob/main/image/connector.png)
