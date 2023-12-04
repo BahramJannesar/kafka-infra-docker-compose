@@ -1,2 +1,5 @@
-# kafka-infra-docker-compose
-CP platform (Zookeeper - Kafka - Schema Registry - Kafka Connect - Kafka REST) dockerized
+### Confluent Platform on Docker - Kafka
+
+This repository is designed for efficiently testing Kafka environments locally and establishing connections with PostgreSQL to capture and retrieve each committed transaction in the database through Kafka.
+
+
