@@ -118,7 +118,7 @@ services:
       - bash
       - -c
       - |
-        confluent-hub install --no-prompt debezium/debezium-connector-mysql:latest
+        confluent-hub install --no-prompt debezium/debezium-connector-postgresql:2.2.1
         confluent-hub install --no-prompt confluentinc/kafka-connect-datagen:0.4.0
         /etc/confluent/docker/run
 
@@ -159,7 +159,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: kafka
+      POSTGRES_DB: postgres
     command:
       - "postgres"
       - "-c"
@@ -169,7 +169,8 @@ services:
     ports:
       - '127.0.0.1:5432:5432'
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./test_data_postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./postgres_data:/var/lib/postgresql/data
     depends_on:
       - zookeeper
       - kafka-broker-1
