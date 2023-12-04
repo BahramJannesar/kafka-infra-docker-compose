@@ -32,3 +32,10 @@ Using this curl command, you can create a new connector with the configuration l
 Navigate to the left side of the Kafka UI, locate "Kafka Connect," and inspect the status of the connector created in step 3 : 
 
 ![](https://github.com/BahramJannesar/kafka-infra-docker-compose/blob/main/image/connector.png)
+
+### Step 5 - (Topics)
+
+When checking the topics in the Kafka UI, you will observe a topic with a name corresponding to your table, along with the prefix specified in the connector configuration:
+
+![](https://github.com/BahramJannesar/kafka-infra-docker-compose/blob/main/image/Kafka%20Topic.png)
+
