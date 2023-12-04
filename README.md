@@ -39,3 +39,9 @@ When checking the topics in the Kafka UI, you will observe a topic with a name c
 
 ![](https://github.com/BahramJannesar/kafka-infra-docker-compose/blob/main/image/Kafka%20Topic.png)
 
+### Step 6 - (Messages)
+
+As evident from the test data inserted into PostgreSQL and the specified "snapshot.mode" in the connector configuration being set to "initial," you can retrieve all of this data from the Kafka topic.
+
+![](https://github.com/BahramJannesar/kafka-infra-docker-compose/blob/main/image/Kafka%20Message.png)
+
