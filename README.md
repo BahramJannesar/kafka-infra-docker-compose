@@ -19,7 +19,5 @@ After pulling containers from Docker Hub and launching all associated services, 
 Using this curl command, you can create a new connector with the configuration located in the "connector" directory : 
 
 ````
-```
  curl http://localhost:8083/connectors -i -X POST -H 'Content-Type: application/json' -d @connectors/postgres_connector_config.json
-```
 ````
