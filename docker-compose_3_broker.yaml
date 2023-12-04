@@ -34,6 +34,7 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
+
   kafka-broker-2:
     image: confluentinc/cp-kafka:7.3.2
     restart: always
@@ -53,6 +54,7 @@ services:
       options:
         max-size: "10m"
         max-file: "10"
+
   kafka-broker-3:
     image: confluentinc/cp-kafka:7.3.2
     restart: always
@@ -78,10 +80,10 @@ services:
     restart: always
     hostname: schema-registry
     depends_on:
+      - zookeeper
       - kafka-broker-1
       - kafka-broker-2
       - kafka-broker-3
-      - zookeeper
     ports:
       - "127.0.0.1:8081:8081"
     environment:
@@ -100,6 +102,11 @@ services:
     image: confluentinc/cp-kafka-rest:7.3.2
     restart: always
     container_name: kafka-rest
+    depends_on:
+      - zookeeper
+      - kafka-broker-1
+      - kafka-broker-2
+      - kafka-broker-3
     ports:
       - "127.0.0.1:8082:8082"
     environment:
@@ -121,12 +128,11 @@ services:
     ports:
       - "127.0.0.1:8083:8083"
     depends_on:
+      - zookeeper
       - kafka-broker-1
       - kafka-broker-2
       - kafka-broker-3
       - schema-registry
-      - zookeeper
-      - kafka-rest
     environment:
       CONNECT_BOOTSTRAP_SERVERS: kafka-broker-1:19092,kafka-broker-2:29092,kafka-broker-3:39092
       CONNECT_REST_PORT: 8083
@@ -169,11 +175,11 @@ services:
     ports:
       - "127.0.0.1:6680:6680"
     depends_on:
+      - zookeeper
       - kafka-broker-1
       - kafka-broker-2
       - kafka-broker-3
       - schema-registry
-      - zookeeper
       - kafka-rest
       - kafka-connect
     environment:
@@ -194,7 +200,6 @@ services:
         max-size: "10m"
         max-file: "10"
 
-
   postgres:
     image: postgres:16.0-alpine3.18
     container_name: postgres-database
@@ -210,13 +215,15 @@ services:
       - "-c"
       - "wal_level=logical"
     ports:
-      - '6032:5432'
+      - '127.0.0.1:5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
     depends_on:
-      - kafka-broker-1
-      - schema-registry
       - zookeeper
+      - kafka-broker-1
+      - kafka-broker-2
+      - kafka-broker-3
+      - schema-registry
       - kafka-rest
       - kafka-connect
       - kafka-ui
