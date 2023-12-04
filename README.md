@@ -5,4 +5,5 @@ This repository is designed for efficiently testing Kafka environments locally a
 ### Step 1
 
 Upon cloning the project from GitHub, execute the following commands.
+
 ``` sudo docker compose up ```
